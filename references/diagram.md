@@ -39,6 +39,8 @@ flowchart TD
 
 對應 UC4、UC5,以及 FR-03、FR-03a、FR-04、FR-19、FR-22。
 
+> ⚠ **MVP 未實作**:UC4 / FR-04(Epic F 已砍)、FR-19(記為未來 Roadmap)。本流程圖保留作 traceability,實作只涵蓋 UC5 主題推薦清單。
+
 ```mermaid
 flowchart TD
     Start([開始規劃]) --> P1[查看主題路線推薦]
@@ -105,6 +107,8 @@ flowchart TD
 ### 1.4 旅程回顧與策展分享 (Review & Curate)
 
 對應 UC9、UC10、UC11、UC12、UC22,以及 FR-11、FR-12、FR-13、FR-14、FR-26、FR-27。
+
+> ⚠ **MVP 未實作**:UC10 / FR-11 分群(Epic C 已砍)。MVP 回顧頁用「時間軸 + 已造訪 photo spots」呈現,流程圖中 R4「呼叫分類引擎自動分群」可改顯示「依時間排序」。
 
 ```mermaid
 flowchart TD
@@ -437,6 +441,8 @@ sequenceDiagram
 
 對應 UC4;FR-03、FR-04。
 
+> ⚠ **MVP 未實作**:UC4 / FR-04(Epic F 已砍)。本 SSD 保留作 traceability。
+
 ```mermaid
 sequenceDiagram
     autonumber
@@ -583,6 +589,8 @@ sequenceDiagram
 ---
 
 ## 4. 圖表與需求對照表
+
+> ⚠ MVP 未實作的 UC/FR 已在各圖開頭標註,本表保留完整 traceability(UC4 / UC10 / FR-04 / FR-11 / FR-19)。
 
 | 圖表 | 對應 Use Case | 對應 Functional Requirement |
 |---|---|---|

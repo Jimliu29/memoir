@@ -19,7 +19,7 @@
 | **G1 必做** | UC3 → UC2 → UC19/20/21 → UC6(基礎位置) | Epic A 景點故事、Epic B 主題瀏覽、Epic N Heritage Mission、Epic D 基礎位置 |
 | **G2 主功能** | UC5 → UC13 → UC8 → UC11 → UC12 → UC22 | Epic E 路線推薦、Epic G 多語、Epic H 足跡記錄、Epic I 敘事生成、Epic J 分享 |
 | **G3 維運** | UC16 → UC17 → UC18 | Epic L Admin CMS |
-| **未列(降級)** | UC7, UC9 | UC9 仍需最小版以支撐 UC10/UC11 入口 |
+| **未列(降級 / 後延)** | UC7, UC9 | UC9 仍需最小版以支撐 UC11 入口;UC7(跨景點脈絡)同 §11 Roadmap |
 | **已砍除(2026-05-15)** | UC1, UC4, UC10, UC14, UC15 | Epic C 整段(自動分類)、Epic F 整段(地圖式行程)、Epic K 整段(費用預估)、機場 Kiosk、在地商家合作、PTX 整合 — 依 refactor.md 不屬於核心體驗 |
 
 ---
@@ -247,7 +247,8 @@ Sprint 6 (週 6) ─ Polish + 整合 + B-2 / L-5 補做 + Final Demo
 
 ### Epic L — Admin CMS(維運)(UC16 / UC17 / UC18 / FR-18)
 
-> **2026-05-14 壓縮**:L-5 UGC tag 審核延到 Sprint 6,釋出 S5 在 Sprint 5 的 3 點給 N-13(Admin Mission 編輯)。
+> **2026-05-14 壓縮**:L-5 UGC tag 審核延到 Sprint 6。
+> **2026-05-15 再修**:N-13 也延到 Sprint 6;Sprint 5 S5 = L-1 + L-2 + L-3 + L-4 = 20 點(原本 25 超載)。
 
 | ID | Story | 估點 | Owner | Sprint |
 |---|---|---|---|---|
@@ -277,7 +278,7 @@ Sprint 6 (週 6) ─ Polish + 整合 + B-2 / L-5 補做 + Final Demo
 | N-10 | Android:`MissionEntryScreen` + 進度條 + geofence 監聽 | 5 | S3 | S2 |
 | N-11 | Android:`PhotoSpotScreen` + CameraX + 取景框 overlay(FR-24) | 8 | **S4**(暫支援)| S2 |
 | N-12 | Android:`MemoryPromptBottomSheet` + 可見性切換(FR-26) | 3 | S3 | S2 |
-| N-13 | Admin 後台:Mission / PhotoSpot / MemoryPrompt 編輯子表單(承接 L-2) | 5 | S5 | S5 |
+| N-13 | Admin 後台:Mission / PhotoSpot / MemoryPrompt 編輯子表單(承接 L-2) | 5 | S5 | **S6**(原 S5,2026-05-15 解 S5 25 點超載而後延)|
 
 > **N-11 Owner 註**:S3 在 Sprint 2 已負擔 D-5 + N-10 + N-12 = 13 點,N-11(8 點)由 S4 暫時支援(Epic C 砍除後 S4 capacity 釋出);若 S4 無 Android 經驗,Mid-Sprint Sync(週三)決定降級或延 Sprint 3。
 
@@ -422,8 +423,8 @@ Sprint 6 (週 6) ─ Polish + 整合 + B-2 / L-5 補做 + Final Demo
 
 **Sprint Goal**:走完一日台南 → 開回顧頁 → 點「生成旅程故事」→ 拿到明信片敘事 → 分享連結出去。
 
-**選入 Stories**:H-1、H-3、H-4、H-5、I-2、I-3、I-4、I-5、J-1、J-2、J-3、M-4
-**推 Sprint 6**:H-2(UGC tag 後端,搭 L-5 一起做)、J-4(Android Sharesheet)
+**選入 Stories**:H-1、H-3、H-4、H-5、I-2、I-3、I-4、I-5、J-1、J-2、J-3、**J-4**、M-4
+**推 Sprint 6**:H-2(UGC tag 後端,搭 L-5 一起做)
 
 | 成員 | 點數 | Tickets |
 |---|---|---|
@@ -431,14 +432,14 @@ Sprint 6 (週 6) ─ Polish + 整合 + B-2 / L-5 補做 + Final Demo
 | D2 | task | **使用者測試 round 1** + 跨文化文案收尾 |
 | S1 | 8 | I-3(3)+ **J-1(5)從 S2 移入** |
 | S2 | 10 | H-1(5)+ J-2(5) |
-| S3 | 13 | H-4(5)+ H-5(3)+ I-5(5) |
+| S3 | **16 ⚠️** | H-4(5)+ H-5(3)+ I-5(5)+ **J-4(3)拉回維持 demo path** |
 | S4 | 8 | I-2(主軸) |
 | S5 | — | L-2 + L-3 推進 |
 | S6 | 5 | M-4 Dockerfile 完成 |
 
 **並行流量警告**:
+- **S3 16 點明顯超載**(1.45x),Mid-Sprint 週三必須評估:H-5 縮為「在 N-10 MissionEntryScreen 加 Tab 兼任足跡入口」(省 2-3 點),或 J-4 只做最簡 share intent 呼叫(省 1-2 點)
 - J-2 / J-3 仍需注意策展版型擴展(refactor 後升級為三套版型);砍法備援:J-2 出圖簡化(只出靜態 1 張不要動態合成)、J-3 只先實作 POSTCARD 版型
-- S3 13 點已逼近上限,若卡 H-5(UC9 最小版足跡地圖),可考慮在 N-10 MissionEntryScreen 加 Tab 兼任入口
 
 **Gate 4 Demo Script**:
 1. 走完一日台南三景點 → 用 tag 記錄(無打字)+ 心情關鍵字
@@ -483,9 +484,9 @@ Sprint 6 (週 6) ─ Polish + 整合 + B-2 / L-5 補做 + Final Demo
 
 **Sprint Goal**:期末 demo 一鏡到底跑完;簡報 / 海報 / Scenario Video 全部上線;**Sprint 4/5 延後的 H-2 / J-4 / N-13 補做完成**。
 
-**選入 Stories**:**B-2(tsvector)**、**H-2(UGC tag 提交)**、**J-4(Android Sharesheet)**、**N-13(Admin Mission 編輯)**、**L-5(UGC tag 審核)**、bug fix、UI polish、Scenario Video 收尾、Demo 排練
+**選入 Stories**:**B-2(tsvector)**、**H-2(UGC tag 提交)**、**N-13(Admin Mission 編輯)**、**L-5(UGC tag 審核)**、bug fix、UI polish、Scenario Video 收尾、Demo 排練
 **已砍除**:C-4(分群圖表)、M-7(離線包)
-**註**:M-4 留在 Sprint 4(S6 5 點),不延後。
+**註**:J-4 / M-4 留在 Sprint 4,不延後。
 
 | 成員 | 點數 | Tickets |
 |---|---|---|
@@ -493,7 +494,7 @@ Sprint 6 (週 6) ─ Polish + 整合 + B-2 / L-5 補做 + Final Demo
 | D2 | task | 使用者測試 round 2 + 修最後 5–10 個 UX 議題 + Scenario Video 剪接 |
 | S1 | 3 | B-2(tsvector)+ E2E 測試 |
 | S2 | 3 | **H-2**(UGC tag 提交,搭 L-5)+ bug fix 衝刺;效能調校(NFR-03 首屏 ≤ 2s 抽查)|
-| S3 | 3 | **J-4**(Android Sharesheet)+ App 最後一輪 polish |
+| S3 | — | App 最後一輪 polish |
 | S4 | — | Mission 內容質量檢查 + LLM prompt 收尾 |
 | S5 | 8 | **N-13**(5)+ **L-5**(3)+ Admin 補洞 |
 | S6 | — | docker-compose prod 部署演練 + DB 備份腳本驗證 |

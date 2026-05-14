@@ -77,7 +77,7 @@ flowchart TB
         AuthSvc["Auth Service<br/>OAuth<br/>NFR-13, NFR-14"]
         UserSvc["User & Preference Service<br/>語言 / 興趣 / 個人化<br/>FR-02, FR-19"]
         RouteSvc["Route Planning Service<br/>主題 / 跨時期路線<br/>FR-03, FR-03a, FR-22"]
-        TripSvc["Trip & Itinerary Service<br/>地圖式行程<br/>FR-04"]
+        TripSvc["Trip & Itinerary Service<br/>地圖式行程<br/>FR-04<br/>⚠ MVP 未實作"]
         I18nSvc["i18n / Localization Service<br/>多語 + 跨文化類比<br/>FR-09, NFR-01, NFR-02"]
     end
 
@@ -130,7 +130,7 @@ flowchart TB
     APIGW["API Gateway / BFF"]
 
     subgraph G3["回顧分享 Domain"]
-        ClassifySvc["Classification Engine<br/>景點自動分群<br/>FR-11"]
+        ClassifySvc["Classification Engine<br/>景點自動分群<br/>FR-11<br/>⚠ MVP 未實作"]
         NarrativeSvc["Narrative Generation<br/>(LLM 驅動)<br/>足跡 + MemoryAnswer +<br/>Mission 進度<br/>FR-13"]
         ShareSvc["Share / Curation Service<br/>策展版型 + 多格式輸出<br/>9:16 / 1:1 / 連結 / 路線<br/>FR-14, FR-27, NFR-15"]
         ReviewSvc["Review / Rating Service<br/>FR-17"]
@@ -233,9 +233,9 @@ flowchart LR
     end
 
     subgraph External["外部服務"]
-        MapAPI["🗺️ Map Service<br/>Google Maps<br/>+ 台灣 PTX / TDX<br/>FR-07"]
+        MapAPI["🗺️ Map Service<br/>OSM + MapLibre / Leaflet<br/>(免費優先;PTX 已砍)<br/>FR-07"]
         TransAPI["🌐 Translation API<br/>機翻 + 人工校對<br/>NFR-02"]
-        LLM["🤖 LLM Provider<br/>Claude / OpenAI<br/>FR-13, NFR-02"]
+        LLM["🤖 LLM Provider<br/>Gemini API(runtime)<br/>+ Ollama(fallback)<br/>FR-13, NFR-02"]
         PushSvc["📨 Push Notification<br/>APNs / FCM<br/>FR-08"]
         SocialAPI["📤 Social APIs<br/>FR-14"]
     end
@@ -315,10 +315,10 @@ flowchart LR
 | | User & Preference | 語言、興趣、個人化 | FR-02, FR-19 |
 | | Content Service | 景點 / 故事 / 脈絡 / Mission / PhotoSpot / MemoryPrompt | FR-05, FR-06, FR-18 |
 | | Route Planning | 主題 / 跨時期路線 | FR-03, FR-03a, FR-22 |
-| | Trip & Itinerary | 地圖式行程 | FR-04 |
+| | Trip & Itinerary | 地圖式行程 ⚠ **MVP 未實作** | FR-04 |
 | | Navigation Service | 實際交通限制處理 | FR-07 |
 | | Footprint Service | 標籤足跡 + UGC + MemoryAnswer | FR-10, FR-21, FR-26 |
-| | Classification Engine | 景點自動分群 | FR-11 |
+| | Classification Engine | 景點自動分群 ⚠ **MVP 未實作** | FR-11 |
 | | Narrative Generation | LLM 旅程敘事(吃 MemoryAnswer + Mission 進度) | FR-13 |
 | | Mission Trigger Service | Geofence 抵達觸發 + 移動中推送 + 進度追蹤 | FR-08, FR-25 |
 | | Photo Guidance Service | 取景框 / 構圖提示 | FR-24 |
@@ -365,8 +365,8 @@ flowchart LR
 | 內容 DB | PostgreSQL / MongoDB / Strapi headless | App 與後台解耦(NFR-16) |
 | 快取 | Redis | 故事卡預載、弱網離線(NFR-05) |
 | 物件儲存 | S3 / GCS + CDN | 高品質圖像(NFR-08) |
-| LLM | Anthropic Claude / OpenAI | 敘事 + 跨文化類比(NFR-02) |
-| 地圖 | Google Maps + 台灣 PTX / TDX | 補強山路、公車、換車(FR-07) |
+| LLM | **Gemini API 免費 tier(runtime)+ Ollama(fallback)** | 對齊 CLAUDE.md §1.1 成本原則;期末不啟用 Claude / OpenAI API |
+| 地圖 | **OSM + MapLibre / Leaflet**(免費)| PTX 整合已砍除;若 demo 需 OSM 替代品再評估 Google Maps free tier |
 | 推播 | APNs / FCM | 移動中故事卡(FR-08) |
 | 觀測性 | Sentry + Datadog / Grafana | 99.5% 可用度(NFR-11) |
 | 部署 | Cloud Run / ECS / Kubernetes | MVP 階段先單一 region |
